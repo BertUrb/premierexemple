@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Premier exemble</string>
+    <string name="hint_mail">Votre adresse mail</string>
+    <string name="cb_text">Se souvenir de moi</string>
+    <string name="hint_psw">password</string>
+    <string name="login_error">Mail ou mot de passe incorrect</string>
+    <string name="welcome_messages">Welcome %1$s!</string>
+    <string name="login_button">Welcome %1$s!</string>
+    <string name="player_name_ph">Player Name</string>
+    <string name="del_text">Delete</string>
+
+
+</resources>
