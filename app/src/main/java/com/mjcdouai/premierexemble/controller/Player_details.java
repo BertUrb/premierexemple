@@ -8,6 +8,7 @@ import com.mjcdouai.premierexemble.model.CustomAdapter;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -33,6 +34,7 @@ private ImageView mPlayerPhotoImageView;
         String str = intent.getStringExtra(CustomAdapter.MESSAGE_URL);
         mPlayerNameTextView.setText(intent.getStringExtra(CustomAdapter.MESSAGE_NAME));
         mPlayerDescTextView.setText(intent.getStringExtra(CustomAdapter.MESSAGE_DESC ));
+        ;
 
 
         URL url = null;
