@@ -6,6 +6,8 @@ public class FootballPlayer {
     private String mName;
     private URL mPhotoUrl;
 
+    private String mDesc;
+
     public String getName() {
         return mName;
     }
@@ -21,9 +23,13 @@ public class FootballPlayer {
     public void setPhotoUrl(URL photoUrl) {
         mPhotoUrl = photoUrl;
     }
+    public String getDesc() {
+        return mDesc;
+    }
 
-    public FootballPlayer(String name, URL photoUrl) {
+    public FootballPlayer(String name, URL photoUrl, String desc) {
         mName = name;
         mPhotoUrl = photoUrl;
+        mDesc = desc;
     }
 }

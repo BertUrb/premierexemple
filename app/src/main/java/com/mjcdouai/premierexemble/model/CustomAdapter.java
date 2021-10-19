@@ -100,9 +100,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
                 PlayerDetailsIntent.putExtra(MESSAGE_NAME,mFootballPlayerArrayList.get( viewHolder.getAdapterPosition()).getName());
                 PlayerDetailsIntent.putExtra(MESSAGE_URL,mFootballPlayerArrayList.get( viewHolder.getAdapterPosition()).getPhotoUrl().toString());
 
-            String Desc = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. cibus felis facilisis. Donec nisl sem, aliquet at ultricies sed, malesuada a tellus. Donec quis mattis libero. Praesent nisi ipsum, maximus eu pharetra in, ultricies ac dui. Maecenas elementum, sapien ac ullamcorper bibendum, purus nulla cursus diam, ut tincidunt risus sem vel lorem. Donec vitae odio in nunc facilisis sollicitudin. Pellentesque ut malesuada velit. Etiam luctus quam in ultricies volutpat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae";
-
-                PlayerDetailsIntent.putExtra(MESSAGE_DESC,Desc);
+                PlayerDetailsIntent.putExtra(MESSAGE_DESC,mFootballPlayerArrayList.get( viewHolder.getAdapterPosition()).getDesc());
 
                 v.getContext().startActivity(PlayerDetailsIntent);
             }
