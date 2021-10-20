@@ -63,36 +63,20 @@ public class LoggedInScreen extends AppCompatActivity implements CustomAdapter.V
                         "Sous le maillot de sa sélection nationale, il remporte l'Euro 2008, la Coupe du monde 2010 et l'Euro 2012 en tant que titulaire, faisant donc partie des sept joueurs présents sur le terrain lors de ces trois finales remportées consécutivement pour une triple couronne inédite dans l'histoire du football mondial. Il est par ailleurs actuellement le joueur le plus capé de la sélection espagnole devant Iker Casillas.\n" +
                         "\n" +
                         "Il devient le capitaine du Real Madrid et de l'Espagne, récupérant le brassard de capitaine du Real Madrid lors du départ en 2015 de l’ancien capitaine et coéquipier en sélection Iker Casillas au FC Porto et le garde jusqu'à son départ en France en 2021. Le 19 juillet 2020, il entre dans l'histoire en ayant marqué 11 buts en une saison en Liga, faisant partie des rares défenseurs ayant marqué plus de 10 buts en Liga depuis Ronald Koeman en 1994 avec 11 réalisations, et le premier au xxie siècle.";
-        try {
-            FootballPlayer fp1 = new FootballPlayer("Keylor Navas", new URL("https://assets-fr.imgfoot.com/keylor-navas-psg-2021-604e75d5796aa.jpg"),desc1);
-            mFootballPlayerArrayList.add(fp1);
-            FootballPlayer fp2 = new FootballPlayer("Achraf Hakimi", new URL("https://images.psg.media/media/207372/17.jpg?"),desc2);
-            mFootballPlayerArrayList.add(fp2);
-            FootballPlayer fp3 = new FootballPlayer("Presnel Kimpembe", new URL("https://www.sofoot.com/IMG/joueurs/presnel-kimpembe-218649.jpg"),desc3);
-            mFootballPlayerArrayList.add(fp3);
-            FootballPlayer fp4 = new FootballPlayer("Sergio Ramos", new URL("https://images.psg.media/media/207467/19.jpg"),desc4);
-            mFootballPlayerArrayList.add(fp4);
-        }
-        catch (Exception e)
-        {
 
-        }
+        FootballPlayer fp1 = new FootballPlayer("Keylor Navas", "https://assets-fr.imgfoot.com/keylor-navas-psg-2021-604e75d5796aa.jpg",desc1);
+        mFootballPlayerArrayList.add(fp1);
+        FootballPlayer fp2 = new FootballPlayer("Achraf Hakimi", "https://images.psg.media/media/207372/17.jpg?",desc2);
+        mFootballPlayerArrayList.add(fp2);
+        FootballPlayer fp3 = new FootballPlayer("Presnel Kimpembe", "https://www.sofoot.com/IMG/joueurs/presnel-kimpembe-218649.jpg",desc3);
+        mFootballPlayerArrayList.add(fp3);
+        FootballPlayer fp4 = new FootballPlayer("Sergio Ramos", "https://images.psg.media/media/207467/19.jpg",desc4);
+        mFootballPlayerArrayList.add(fp4);
+
         CustomAd = new CustomAdapter(mFootballPlayerArrayList,this);
         mPlayerListRecyclerView.setAdapter(CustomAd);
         mRecentLayoutManager = new LinearLayoutManager(this);
         mPlayerListRecyclerView.setLayoutManager(mRecentLayoutManager);
-        CustomAd.notifyDataSetChanged();
-
-
-
-
-
-
-
-
-
-
-
 
     }
 

@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private CheckBox mCheckBox;
 
 
-    private User mUser=new User();
+    private final User mUser=new User();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

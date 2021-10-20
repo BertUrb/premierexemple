@@ -1,10 +1,9 @@
 package com.mjcdouai.premierexemble.model;
 
-import java.net.URL;
 
 public class FootballPlayer {
     private String mName;
-    private URL mPhotoUrl;
+    private String mPhotoUrl;
 
     private String mDesc;
 
@@ -16,18 +15,18 @@ public class FootballPlayer {
         mName = name;
     }
 
-    public URL getPhotoUrl() {
+    public String getPhotoUrl() {
         return mPhotoUrl;
     }
 
-    public void setPhotoUrl(URL photoUrl) {
+    public void setPhotoUrl(String photoUrl) {
         mPhotoUrl = photoUrl;
     }
     public String getDesc() {
         return mDesc;
     }
 
-    public FootballPlayer(String name, URL photoUrl, String desc) {
+    public FootballPlayer(String name, String photoUrl, String desc) {
         mName = name;
         mPhotoUrl = photoUrl;
         mDesc = desc;
