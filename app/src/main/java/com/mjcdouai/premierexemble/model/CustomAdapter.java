@@ -22,32 +22,38 @@ import java.util.ArrayList;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
 
-    public static final String MESSAGE_URL = "com.mjcdouai.premierexemble.controller.url";
-    public static final String MESSAGE_NAME = "com.mjcdouai.premierexemble.controller.name";
-    public static final String MESSAGE_DESC = "com.mjcdouai.premierexemble.controller.desc";
+
 
     private ArrayList<FootballPlayer> mFootballPlayerArrayList = new ArrayList<>();
+    private ViewHolder.onPlayerListener mOnPlayerListener;
 
     /**
      * Provide a reference to the type of views that you are using
      * (custom ViewHolder).
      */
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private final TextView textView;
         private final ImageView mImageView;
         private final ImageButton mDeleteButton;
+         onPlayerListener onPlayerListener;
 
 
 
-
-        public ViewHolder(View view) {
+        public ViewHolder(View view,onPlayerListener onPlayerListener) {
             super(view);
             // Define click listener for the ViewHolder's View
 
             textView = (TextView) view.findViewById(R.id.player_text);
             mImageView = view.findViewById(R.id.player_image);
             mDeleteButton = view.findViewById(R.id.item_list_player_delete_button);
+            view.setOnClickListener(this);
+            this.onPlayerListener = onPlayerListener;
 
+        }
+        @Override
+        public void onClick(View view)
+        {
+            onPlayerListener.onPlayerClick(getAdapterPosition());
         }
 
         public TextView getTextView() {
@@ -58,16 +64,18 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         }
         public ImageButton getDeleteButton() { return mDeleteButton;  }
 
+
+        public interface onPlayerListener{
+            void onPlayerClick(int position);
+        }
     }
 
     /**
-     * Initialize the dataset of the Adapter.
-     *
-     * @param dataSet String[] containing the data to populate views to be used
-     * by RecyclerView.
+     * Initialize the dataset of the Adapter
      */
-    public CustomAdapter(ArrayList<FootballPlayer> dataSet) {
+    public CustomAdapter(ArrayList<FootballPlayer> dataSet, ViewHolder.onPlayerListener pl) {
         mFootballPlayerArrayList = dataSet;
+        mOnPlayerListener = pl;
     }
 
     // Create new views (invoked by the layout manager)
@@ -77,12 +85,12 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         View view = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.list_item_player, viewGroup, false);
 
-        return new ViewHolder(view);
+        return new ViewHolder(view,mOnPlayerListener);
     }
 
     // Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(ViewHolder viewHolder, final int position) {
+    public void onBindViewHolder(ViewHolder viewHolder, final int position)  {
 
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
@@ -94,17 +102,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
                 .override(200, 200) // resizing
                 .centerCrop()
                 .into(viewHolder.getImageView());
-        viewHolder.getImageView().setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent PlayerDetailsIntent = new Intent(v.getContext(),Player_details.class);
-                PlayerDetailsIntent.putExtra(MESSAGE_NAME,mFootballPlayerArrayList.get( viewHolder.getAdapterPosition()).getName());
-                PlayerDetailsIntent.putExtra(MESSAGE_URL,mFootballPlayerArrayList.get( viewHolder.getAdapterPosition()).getPhotoUrl().toString());
 
-                PlayerDetailsIntent.putExtra(MESSAGE_DESC,mFootballPlayerArrayList.get( viewHolder.getAdapterPosition()).getDesc());
-
-                v.getContext().startActivity(PlayerDetailsIntent);
-            }
-        });
 
         viewHolder.getDeleteButton().setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -121,4 +119,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     public int getItemCount() {
         return mFootballPlayerArrayList.size();
     }
+
+
 }

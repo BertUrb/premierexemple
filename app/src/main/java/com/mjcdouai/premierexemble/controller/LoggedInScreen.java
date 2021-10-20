@@ -16,13 +16,17 @@ import com.mjcdouai.premierexemble.model.FootballPlayer;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class LoggedInScreen extends AppCompatActivity {
+public class LoggedInScreen extends AppCompatActivity implements CustomAdapter.ViewHolder.onPlayerListener {
 
     private TextView mWelcomeText;
     private RecyclerView mPlayerListRecyclerView;
     private ArrayList<FootballPlayer> mFootballPlayerArrayList = new ArrayList<>();
     private CustomAdapter CustomAd;
     private LinearLayoutManager mRecentLayoutManager;
+
+    public static final String MESSAGE_URL = "com.mjcdouai.premierexemble.controller.url";
+    public static final String MESSAGE_NAME = "com.mjcdouai.premierexemble.controller.name";
+    public static final String MESSAGE_DESC = "com.mjcdouai.premierexemble.controller.desc";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +77,7 @@ public class LoggedInScreen extends AppCompatActivity {
         {
 
         }
-        CustomAd = new CustomAdapter(mFootballPlayerArrayList);
+        CustomAd = new CustomAdapter(mFootballPlayerArrayList,this);
         mPlayerListRecyclerView.setAdapter(CustomAd);
         mRecentLayoutManager = new LinearLayoutManager(this);
         mPlayerListRecyclerView.setLayoutManager(mRecentLayoutManager);
@@ -90,5 +94,16 @@ public class LoggedInScreen extends AppCompatActivity {
 
 
 
+    }
+
+    @Override
+    public void onPlayerClick(int position) {
+        Intent PlayerDetailsIntent = new Intent(this,Player_details.class);
+        PlayerDetailsIntent.putExtra(MESSAGE_NAME,mFootballPlayerArrayList.get( position).getName());
+        PlayerDetailsIntent.putExtra(MESSAGE_URL,mFootballPlayerArrayList.get( position).getPhotoUrl().toString());
+
+        PlayerDetailsIntent.putExtra(MESSAGE_DESC,mFootballPlayerArrayList.get( position).getDesc());
+
+        startActivity(PlayerDetailsIntent);
     }
 }

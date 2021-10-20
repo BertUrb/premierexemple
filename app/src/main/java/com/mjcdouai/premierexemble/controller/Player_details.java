@@ -31,9 +31,9 @@ private ImageView mPlayerPhotoImageView;
         mPlayerPhotoImageView = findViewById(R.id.player_full_image);
 
         Intent intent = getIntent();
-        String str = intent.getStringExtra(CustomAdapter.MESSAGE_URL);
-        mPlayerNameTextView.setText(intent.getStringExtra(CustomAdapter.MESSAGE_NAME));
-        mPlayerDescTextView.setText(intent.getStringExtra(CustomAdapter.MESSAGE_DESC ));
+        String str = intent.getStringExtra(LoggedInScreen.MESSAGE_URL);
+        mPlayerNameTextView.setText(intent.getStringExtra(LoggedInScreen.MESSAGE_NAME));
+        mPlayerDescTextView.setText(intent.getStringExtra(LoggedInScreen.MESSAGE_DESC ));
         ;
 
 
