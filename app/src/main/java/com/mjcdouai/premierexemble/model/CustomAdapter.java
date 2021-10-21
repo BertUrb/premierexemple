@@ -19,16 +19,16 @@ import java.util.ArrayList;
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
 
     private final ArrayList<FootballPlayer> mFootballPlayerArrayList;
-    private final ViewHolder.onPlayerListener mOnPlayerListener;
+    private final ViewHolder.onClickPlayerListener mOnClickPlayerListener;
 
 
 
     /**
      * Initialize the dataset of the Adapter
      */
-    public CustomAdapter(ArrayList<FootballPlayer> dataSet, ViewHolder.onPlayerListener pl) {
+    public CustomAdapter(ArrayList<FootballPlayer> dataSet, ViewHolder.onClickPlayerListener pl) {
         mFootballPlayerArrayList = dataSet;
-        mOnPlayerListener = pl;
+        mOnClickPlayerListener = pl;
     }
 
     // Create new views (invoked by the layout manager)
@@ -39,7 +39,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         View view = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.list_item_player, viewGroup, false);
 
-        return new ViewHolder(view,mOnPlayerListener);
+        return new ViewHolder(view, mOnClickPlayerListener);
     }
 
     // Replace the contents of a view (invoked by the layout manager)
@@ -52,11 +52,9 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         Glide.with(viewHolder.itemView)
                 .asDrawable()
                 .load(mFootballPlayerArrayList.get(position).getPhotoUrl())
-
                 .override(200, 200) // resizing
                 .centerCrop()
                 .into(viewHolder.getImageView());
-
 
         viewHolder.getDeleteButton().setOnClickListener(v -> {
                          // remove your item from data base
@@ -82,11 +80,9 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         private final TextView textView;
         private final ImageView mImageView;
         private final ImageButton mDeleteButton;
-        onPlayerListener onPlayerListener;
+        onClickPlayerListener onClickPlayerListener;
 
-
-
-        public ViewHolder(View view,onPlayerListener onPlayerListener) {
+        public ViewHolder(View view, onClickPlayerListener onClickPlayerListener) {
             super(view);
             // Define click listener for the ViewHolder's View
 
@@ -94,13 +90,13 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
             mImageView = view.findViewById(R.id.player_image);
             mDeleteButton = view.findViewById(R.id.item_list_player_delete_button);
             view.setOnClickListener(this);
-            this.onPlayerListener = onPlayerListener;
+            this.onClickPlayerListener = onClickPlayerListener;
 
         }
         @Override
         public void onClick(View view)
         {
-            onPlayerListener.onPlayerClick(getAdapterPosition());
+            onClickPlayerListener.onPlayerClick(getAdapterPosition());
         }
 
         public TextView getTextView() {
@@ -112,7 +108,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         public ImageButton getDeleteButton() { return mDeleteButton;  }
 
 
-        public interface onPlayerListener{
+        public interface onClickPlayerListener {
             void onPlayerClick(int position);
         }
     }

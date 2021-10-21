@@ -1,7 +1,6 @@
 package com.mjcdouai.premierexemble.controller;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,10 +12,9 @@ import com.mjcdouai.premierexemble.R;
 import com.mjcdouai.premierexemble.model.CustomAdapter;
 import com.mjcdouai.premierexemble.model.FootballPlayer;
 
-import java.net.URL;
 import java.util.ArrayList;
 
-public class LoggedInScreen extends AppCompatActivity implements CustomAdapter.ViewHolder.onPlayerListener {
+public class LoggedInScreen extends AppCompatActivity implements CustomAdapter.ViewHolder.onClickPlayerListener {
 
     private TextView mWelcomeText;
     private RecyclerView mPlayerListRecyclerView;
