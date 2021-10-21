@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
 
-    tools:context=".controller.Player_details">
+    tools:context=".controller.PlayerDetailsActivity">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

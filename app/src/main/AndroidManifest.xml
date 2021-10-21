@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PremierExemble">
         <activity
-            android:name=".controller.Player_details"
+            android:name=".controller.PlayerDetailsActivity"
             android:exported="true" />
         <activity
             android:name=".controller.LoggedInScreen"

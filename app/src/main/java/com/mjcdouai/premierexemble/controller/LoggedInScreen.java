@@ -9,12 +9,13 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.mjcdouai.premierexemble.R;
+import com.mjcdouai.premierexemble.callback.OnClickPlayerListener;
 import com.mjcdouai.premierexemble.model.CustomAdapter;
 import com.mjcdouai.premierexemble.model.FootballPlayer;
 
 import java.util.ArrayList;
 
-public class LoggedInScreen extends AppCompatActivity implements CustomAdapter.ViewHolder.onClickPlayerListener {
+public class LoggedInScreen extends AppCompatActivity implements OnClickPlayerListener {
 
     private TextView mWelcomeText;
     private RecyclerView mPlayerListRecyclerView;
@@ -80,12 +81,14 @@ public class LoggedInScreen extends AppCompatActivity implements CustomAdapter.V
 
     @Override
     public void onPlayerClick(int position) {
-        Intent PlayerDetailsIntent = new Intent(this,Player_details.class);
-        PlayerDetailsIntent.putExtra(MESSAGE_NAME,mFootballPlayerArrayList.get( position).getName());
+        Intent playerDetailsIntent = new Intent(this, PlayerDetailsActivity.class);
+        /* PlayerDetailsIntent.putExtra(MESSAGE_NAME,mFootballPlayerArrayList.get( position).getName());
         PlayerDetailsIntent.putExtra(MESSAGE_URL,mFootballPlayerArrayList.get( position).getPhotoUrl());
 
         PlayerDetailsIntent.putExtra(MESSAGE_DESC,mFootballPlayerArrayList.get( position).getDesc());
+                */
 
-        startActivity(PlayerDetailsIntent);
+        playerDetailsIntent.putExtra("Joueur",mFootballPlayerArrayList.get( position));
+        startActivity(playerDetailsIntent);
     }
 }
