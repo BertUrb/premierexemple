@@ -82,7 +82,7 @@ public class LoggedInScreen extends AppCompatActivity implements CustomAdapter.V
     public void onPlayerClick(int position) {
         Intent PlayerDetailsIntent = new Intent(this,Player_details.class);
         PlayerDetailsIntent.putExtra(MESSAGE_NAME,mFootballPlayerArrayList.get( position).getName());
-        PlayerDetailsIntent.putExtra(MESSAGE_URL,mFootballPlayerArrayList.get( position).getPhotoUrl().toString());
+        PlayerDetailsIntent.putExtra(MESSAGE_URL,mFootballPlayerArrayList.get( position).getPhotoUrl());
 
         PlayerDetailsIntent.putExtra(MESSAGE_DESC,mFootballPlayerArrayList.get( position).getDesc());
 

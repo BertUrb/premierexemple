@@ -31,21 +31,15 @@ private ImageView mPlayerPhotoImageView;
         mPlayerPhotoImageView = findViewById(R.id.player_full_image);
 
         Intent intent = getIntent();
-        String str = intent.getStringExtra(LoggedInScreen.MESSAGE_URL);
+        String ImageUrl = intent.getStringExtra(LoggedInScreen.MESSAGE_URL);
         mPlayerNameTextView.setText(intent.getStringExtra(LoggedInScreen.MESSAGE_NAME));
         mPlayerDescTextView.setText(intent.getStringExtra(LoggedInScreen.MESSAGE_DESC ));
         ;
 
 
-        URL url = null;
-        try {
-            URI uri = new URI(str);
-            url = uri.toURL();
-        }
-        catch (Exception e){ }
+
         Glide.with(this)
-                .asDrawable()
-                .load(url)
+                .load(ImageUrl)
                 .into(mPlayerPhotoImageView);
     }
 }

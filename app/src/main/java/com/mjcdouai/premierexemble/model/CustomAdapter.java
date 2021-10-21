@@ -26,9 +26,9 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
     /**
      * Initialize the dataset of the Adapter
      */
-    public CustomAdapter(ArrayList<FootballPlayer> dataSet, ViewHolder.onClickPlayerListener pl) {
+    public CustomAdapter(ArrayList<FootballPlayer> dataSet, ViewHolder.onClickPlayerListener onClickPlayerListener) {
         mFootballPlayerArrayList = dataSet;
-        mOnClickPlayerListener = pl;
+        mOnClickPlayerListener = onClickPlayerListener;
     }
 
     // Create new views (invoked by the layout manager)
@@ -50,7 +50,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
         // contents of the view with that element
         viewHolder.getTextView().setText(mFootballPlayerArrayList.get(position).getName());
         Glide.with(viewHolder.itemView)
-                .asDrawable()
                 .load(mFootballPlayerArrayList.get(position).getPhotoUrl())
                 .override(200, 200) // resizing
                 .centerCrop()
