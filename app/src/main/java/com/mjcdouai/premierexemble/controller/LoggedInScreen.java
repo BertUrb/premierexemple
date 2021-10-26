@@ -12,6 +12,7 @@ import com.mjcdouai.premierexemble.R;
 import com.mjcdouai.premierexemble.callback.OnClickPlayerListener;
 import com.mjcdouai.premierexemble.model.CustomAdapter;
 import com.mjcdouai.premierexemble.model.FootballPlayer;
+import com.mjcdouai.premierexemble.recyclerview.TopSpacingItemDecoration;
 
 import java.util.ArrayList;
 
@@ -73,6 +74,8 @@ public class LoggedInScreen extends AppCompatActivity implements OnClickPlayerLi
         mFootballPlayerArrayList.add(fp4);
 
         CustomAd = new CustomAdapter(mFootballPlayerArrayList,this);
+        TopSpacingItemDecoration topSpacingItemDecoration = new TopSpacingItemDecoration(15);
+        mPlayerListRecyclerView.addItemDecoration(topSpacingItemDecoration);
         mPlayerListRecyclerView.setAdapter(CustomAd);
         mRecentLayoutManager = new LinearLayoutManager(this);
         mPlayerListRecyclerView.setLayoutManager(mRecentLayoutManager);
